@@ -12,7 +12,9 @@
 */
 
 Route::get('/', function () {
+
     return view('welcome');
+
 });
 
 Route::namespace('Auth')->group(function () {
@@ -45,4 +47,15 @@ Route::middleware(['check.auth'])->group(function () {
 
 });
 
+if(env('APP_DEBUG') == 'true') {
+
+    Route::get('set-auth', function () {
+
+        session(['shop_auth' => env('DEV_SHOP_AUTH'), 'token_auth' => env('DEV_TOKEN_AUTH')]);
+
+        return redirect()->route('dashboard')->with('status', 'You logged in as a developer!');
+
+    });
+
+}
 
