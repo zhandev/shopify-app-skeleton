@@ -19,7 +19,7 @@ class Base
 
         $this->shop = $shop;
         $this->token = $token;
-        $this->client = new Client(['base_url' => "https://$shop"]);
+        $this->client = new Client(['base_uri' => "https://".$this->shop]);
 
     }
 
@@ -100,11 +100,11 @@ class Base
     }
 
     /**
-     * @return array
+     * @return string
      */
     public function getShopDomain()
     {
-        return $this->shop;
+        return (string)$this->shop;
     }
 
 }

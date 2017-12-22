@@ -23,3 +23,17 @@ Route::namespace('Auth')->group(function () {
 
 });
 
+Route::namespace('Charge')->group(function () {
+
+    Route::get('check-charge', 'ChargeController@checkCharge')->name('checkCharge');
+
+});
+
+Route::namespace('Shop')->group(function () {
+
+    Route::get('check-shop', 'ShopController@checkShop')->name('checkShop');
+
+});
+
+
+

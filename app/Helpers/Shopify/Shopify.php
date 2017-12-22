@@ -58,4 +58,16 @@ class Shopify extends Base
 
     }
 
+    public function recurringApplicationCharges() {
+
+        return new Resources\RecurringApplicationCharges($this->shop, $this->token);
+
+    }
+
+    public function products() {
+
+        return new Resources\Products($this->shop, $this->token);
+
+    }
+
 }
