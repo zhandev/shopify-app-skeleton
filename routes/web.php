@@ -23,6 +23,8 @@ Route::namespace('Auth')->group(function () {
 
     Route::get('create-session', 'AuthController@createSession')->name('createSession');
 
+    Route::get('logout', 'AuthController@logout');
+
 });
 
 Route::namespace('Charge')->group(function () {
@@ -37,7 +39,7 @@ Route::namespace('Shop')->group(function () {
 
 });
 
-Route::middleware([])->group(function () {
+Route::middleware(['check.auth'])->group(function () {
 
     Route::get('dashboard', 'DashboardController@index')->name('dashboard');
 

@@ -42,7 +42,8 @@ class AuthController extends Controller
 
     }
 
-    public function createSession(Request $request) {
+    public function createSession(Request $request)
+    {
 
         $shop = $request->session()->get('shop');
         $token = $request->session()->get('token');
@@ -57,6 +58,13 @@ class AuthController extends Controller
             abort(302);
         }
 
+    }
+
+    public function logout(Request $request)
+    {
+        $request->session()->flush();
+
+        return redirect('/')->with('status', 'You have successfully logged out!');
     }
 
 
