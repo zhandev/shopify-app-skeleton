@@ -11,6 +11,7 @@ namespace App\Http\Controllers\Auth;
 use App\Helpers\Shopify\Shopify;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Models\Shop;
 
 class AuthController extends Controller
 {
@@ -40,5 +41,23 @@ class AuthController extends Controller
         ]);
 
     }
+
+    public function createSession(Request $request) {
+
+        $shop = $request->session()->get('shop');
+        $token = $request->session()->get('token');
+
+        if(Shop::getShop($shop, $token)) {
+
+            session(['shop_auth' => $shop, 'token_auth' => $token]);
+
+            return redirect()->route('dashboard');
+
+        }else {
+            abort(302);
+        }
+
+    }
+
 
 }

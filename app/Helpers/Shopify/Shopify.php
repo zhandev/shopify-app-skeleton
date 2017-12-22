@@ -70,4 +70,10 @@ class Shopify extends Base
 
     }
 
+    public function shop() {
+
+        return new Resources\Shop($this->shop, $this->token);
+
+    }
+
 }
