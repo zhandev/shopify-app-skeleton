@@ -14,3 +14,12 @@
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::namespace('Auth')->group(function () {
+
+    Route::get('install', 'AuthController@install');
+
+    Route::get('auth', 'AuthController@auth');
+
+});
+
